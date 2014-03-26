@@ -1,15 +1,14 @@
-@(title: String)(content: Html) (implicit flash:Flash, lang:Lang)
+@(title: String)(content: Html)(implicit flash:Flash, lang:Lang)
 
 <!DOCTYPE html>
 
 <html>
     <head>
         <title>@title</title>
-        <link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/bootstrap.css")'>
-        <link rel="stylesheet" media="screen" type="text/css" href="@routes.Assets.at("stylesheets/main.css")">
+        <link rel="stylesheet" media="screen" type="text/css" href='@routes.Assets.at("stylesheets/bootstrap.css")'>
+        <link rel="stylesheet" media="screen"  href='@routes.Assets.at("stylesheets/main.css")'>
 
-
-    </head>
+   </head>
     <body>
         <div class="screenshot">
             <div class="navbar navbar-fixed-top">

@@ -5,6 +5,7 @@ description = Description
 
 products.details = Product : {0}
 
+products.list.navigation = Products
 products.form = Product Details
 products.new = (new)
 products.new.command = New

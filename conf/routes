@@ -8,12 +8,20 @@ GET     /                           controllers.Application.index
 #get products list
 GET     /products                   controllers.Products.list
 
-#get product details
-GET     /products/:ean              controllers.Products.show(ean:Long)
-
 
 #barcode
 GET     /barcode/:ean               controllers.Barcodes.barcode(ean:Long)
+
+
+#post product
+POST    /products                   controllers.Products.save
+
+#Get new product
+GET     /products/new               controllers.Products.newProduct
+
+#get product details
+GET     /products/:ean              controllers.Products.show(ean:Long)
+
 
 
 # Map static resources from the /public folder to the /assets URL path
