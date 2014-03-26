@@ -1,0 +1,24 @@
+@(productForm:Form[Product])(implicit flash:Flash,lang:Lang)
+@import helper._
+@import helper.TwitterBootstrap._
+@main(Messages("products.form"){
+
+    <h2>@Messages("products.form")</h2>
+
+    @helper.form(action = route.Product.save()){
+        <fieldset>
+            <legend>
+                @Messages("products.details",Messages("products.new"))
+            </legend>
+
+            @helper.inputText(products.form("ean"))
+            @helper.inputText(products.form("name"))
+            @helper.textarea(products.form("description"))
+
+        </fieldset>
+
+        <p>
+            <input type="submit" class="btn primary" value='@Messages("products.new.submit")'>
+        </p>
+    }
+}

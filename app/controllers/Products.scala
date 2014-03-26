@@ -8,6 +8,7 @@ import models.Product
 import play.api.data.Form
 import play.api.data.Forms.{mapping,longNumber,nonEmptyText}
 import play.api.i18n.Messages
+import play.api.mvc.Flash
 
 
 
@@ -33,5 +34,26 @@ object Products extends Controller{
               Product.findbyEan(ean).map{
                   product => Ok(views.html.products.details(product))
               }.getOrElse(NotFound)
+        }
+
+
+        def save = Action {
+              implicit  request =>
+              val newProductForm = productForm.bindFromRequest()
+
+              newProductForm.fold{
+                  hasErrors = {
+                      Redirect(routes.Products.newProduct()).
+                        flashing(Flash(form.data) +
+                        ("error" -> Messages("validation.errors")))
+                  },
+                  success = {
+                    newProduct =>
+                      Product.add(newProduct)
+                      val message = Messages("products.new.success",newProcuct.name)
+                      Redirect(routes.Products.show(newProduct.ean)).
+                        flashing("success" -> message)
+                  }
+              }
         }
 }
